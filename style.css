@@ -37,30 +37,37 @@ body::before {
 }
 
 .input-container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 99%;
   margin-top: 100px;
+  margin-bottom: 10px;
 }
 
 .input {
   width: 100%;
   height: 50px;
-  padding-inline: 5%;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  padding-inline: 5% 32%;
+  border-radius: 100px;
   border: none;
   outline: none;
   font-size: 1rem;
 }
 
 .button {
-  width: 100%;
-  height: 50px;
+  position: absolute;
+  top: 50%;
+  right: -1%;
+  transform: translate(0, -50%);
   font-size: 1.5rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 100px;
   cursor: pointer;
+  background-color: #303030;
+  color: #fff;
+  height: 100%;
+  width: 30%;
 }
 
 .task-list-container {
@@ -85,25 +92,30 @@ body::before {
 }
 .task div {
   display: flex;
-  width: 70%;
+  width: 90%;
   justify-content: space-between;
-  padding-left: 20%;
+  padding-left: 10%;
 }
+
 .task div span {
-  display: flex;
-  align-items: center;
+  display: inline-block;
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .radio-button {
   cursor: pointer;
   position: absolute;
+  user-select: none;
+  font-size: 2rem;
 }
 
 .delete-button {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  background-color: #dc4c64;
+  background-color: #303030;
+  color: #fff;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;

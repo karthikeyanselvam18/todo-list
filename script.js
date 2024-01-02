@@ -1,16 +1,14 @@
 const taskInput = document.querySelector(".task-input");
-const dueDateInput = document.querySelector(".dueDate-input");
 const button = document.querySelector(".button");
 const radio = document.querySelector(".radio-button");
 const taskListContainer = document.querySelector(".task-list-container");
 let items = JSON.parse(localStorage.getItem("todoList")) || [];
 button.addEventListener("click", () => {
-  if (taskInput.value === "" || dueDateInput.value === "") {
-    console.log("nope");
+  if (taskInput.value.trim() === "") {
+    taskInput.placeholder = "Input required";
   } else {
     const object = {
       task: taskInput.value,
-      dueDate: dueDateInput.value,
       isDone: false,
     };
     items.push(object);
@@ -22,14 +20,13 @@ button.addEventListener("click", () => {
 function renderTasks() {
   taskListContainer.innerHTML = "";
   items.forEach((item, index) => {
-    const isDone = item.isDone
-      ? "radio-button-selected.png"
-      : "radio-button.png";
+    const isDone = item.isDone ? "toggle_on" : "toggle_off";
     const isStriked = item.isDone ? "text-decoration: line-through;" : "";
     const element = document.createElement("div");
     element.classList = "task";
-    element.innerHTML = `<img class="radio-button" data-index="${index}" src="${isDone}" alt="" />
-    <div style="${isStriked}"><span>${item.task}</span> <span>${item.dueDate}</span></div>
+    element.innerHTML = `
+    <span class="material-icons radio-button" data-index="${index}">${isDone}</span>
+    <div style="${isStriked}"><span>${item.task}</span></div>
     <button class="delete-button" data-index="${index}">X</button>`;
     taskListContainer.appendChild(element);
   });
